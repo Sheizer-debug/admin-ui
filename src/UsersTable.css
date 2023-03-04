@@ -1,0 +1,8 @@
+.users-table{
+    width:100vw;
+    height:80vh;
+}
+table, tr {
+    border: 1px solid #E0E0E0;
+    border-collapse: collapse;
+  }

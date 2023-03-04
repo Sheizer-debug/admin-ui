@@ -1,0 +1,7 @@
+.dialog-header, .dialog-header >label{
+    color:#FFFFFF;
+
+}
+.dialog-content{
+    padding: 1rem 1rem 1.5rem !important;
+}

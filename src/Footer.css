@@ -1,0 +1,9 @@
+.footer{
+    display:flex;
+    padding:0.7rem 2.5rem 0.1rem;
+}
+.page-button{
+    height: 2rem;
+    align-self: center;
+    border-radius:100%!important;
+}
