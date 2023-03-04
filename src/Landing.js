@@ -78,21 +78,28 @@ function changeSelection(id)//manages selection or deselection of a row
 function deleteSelected()//delete based on selected rows
 {
   let newUsers=users.filter((user)=>!selected.includes(user.id));
+  /*remove the deleted users from allUsers to ensure they dont show up in searches*/
+  let updatedAllUsers=structuredClone(allUsers.current);
+  allUsers.current=updatedAllUsers.filter((user)=>!selected.includes(user.id));
   setUsers(newUsers); 
   if(selectAll)
     setSelectAll(!selectAll);//flip the state of the Select All checkbox
   setSelected([]);//on deletion using the 'Delete Selected' button remove all selected rows from selected state array
+  console.log(selected);
 }
 function deleteUser(id)//delete user using delete icon
 {
   let newUsers=users.filter((user)=>user.id!=id);
+  /*remove the deleted users from allUsers to ensure they dont show up in searches*/
+  let updatedAllUsers=structuredClone(allUsers.current);
+  allUsers.current=updatedAllUsers.filter((user)=>user.id!=id);
   setUsers(newUsers);   
 }
 function filterSearch(e)//function to filter users based on search query
 { 
   setSearch(e.target.value);
   let searchTerm=e.target.value.toLowerCase();
-  console.log(searchTerm);
+  //console.log(searchTerm);
   if(searchTerm==='')//if the search bar is empty we display all the users
   {
     setUsers(allUsers.current);  
