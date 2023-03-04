@@ -43,7 +43,15 @@ function handleClose()//close dialog modal
 {
     setOpen(false);
 }
+function validateInput()//function to validate the details to edit
+{
+        if(formData.email===""||formData.role === ""||formData.email === "" || !formData.email.includes('@'))
+            return false;
+        return true;
+}
 function editDetails(){
+    if(!validateInput())
+        return;
     let newUsers=structuredClone(users);
     // Get the index of Array item which matchs the editId
     let index=newUsers.findIndex(user=>user.id===editId);
@@ -53,7 +61,6 @@ function editDetails(){
     index=updatedAllUsers.findIndex(user=>user.id===editId);
     updatedAllUsers[index]={id:`${editId}`,...formData};
     allUsers.current=updatedAllUsers;
-    console.log('Updated:',formData,editId,users,currentPageData,updatedAllUsers);
     setFormData({
         "name": "",
         "email": "",

@@ -19,7 +19,7 @@ async function fetchData(){//function to fetch user data from backend
   const url=`${ipConfig.backendIP}`;
   try{
       const response = await axios.get(url);
-      console.log('API Reponse',response);
+      //console.log('API Reponse',response);
       setUsers(response.data);
       allUsers.current=response.data;
       let firstIndex= (currentPage-1)*usersPerPage;//first user index of current page
@@ -39,7 +39,7 @@ useEffect(()=>{//called on component mount
     isInitialMount.current=false;
   else
   {
-    console.log('On Update',users);
+    console.log('On Update');
     let firstIndex= (currentPage-1)*usersPerPage;//first user index of current page
     let lastIndex=firstIndex+usersPerPage;//last user index of current page
     /*in case we are on a page which becomes empty on filtering based on a search query we move the current page one page back

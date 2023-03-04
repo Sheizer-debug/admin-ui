@@ -48,18 +48,24 @@ editDetails: Function to commit the edits to the current row*/
                                 label="Name"
                                 value={formData.name}
                                 onChange={update}
+                                error={formData.name === ""}
+                                helperText={formData.name === "" ? 'Name cannot be empty':''}
                             />
                             <TextField
                                 name="email"
                                 label="Email"
                                 value={formData.email}
                                 onChange={update}
+                                error={formData.email === "" || !formData.email.includes('@')}
+                                helperText={formData.email === ""?'Email cannot be empty':!formData.email.includes('@')?'Missing @':''}
                             />
                             <TextField
                                 name="role"
                                 label="Role"
                                 value={formData.role}
                                 onChange={update}
+                                error={formData.role === ""}
+                                helperText={formData.role === "" ? 'Role cannot be empty':''}
                             />
                     </DialogContent>
                     <DialogActions style={{justifyContent:"flex-start"}}>
