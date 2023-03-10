@@ -6,3 +6,11 @@ table, tr {
     border: 1px solid #E0E0E0;
     border-collapse: collapse;
   }
+  @media only screen and (max-width: 768px)
+  {
+    .users-table{
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+  }

@@ -4,6 +4,7 @@ import React from "react";
 import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
+import Grid from '@mui/material/Grid';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -39,24 +40,24 @@ export default function Footer({currentPage,totalCount,usersPerPage,deleteSelect
   let lastPage=pageNumbers[pageNumbers.length - 1];
   return (
     <Box className="footer">
-      <Stack direction="row" sx={{alignItems:"center"}}spacing={40}>
+      <Stack   direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 1, md: 40 }} sx={{alignItems:"center"}}>
             <Chip sx={{backgroundColor:theme.components.Button.backgroundColor,color:theme.components.Button.textColor}}label="Delete Selected"onClick={deleteSelected} />
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" sx={{flexFlow:"wrap"}}spacing={{ xs: 0.5, md: 2 }}>
                     <IconButton disabled={currentPage==1?true:false}variant="contained" color="primary" onClick={toStart}>
-                        <KeyboardDoubleArrowLeftIcon sx={{ fontSize: "2rem" }}/>
+                        <KeyboardDoubleArrowLeftIcon sx={{ fontSize: "1rem"}}/>
                     </IconButton>
                     <IconButton disabled={currentPage==1?true:false} variant="contained" color="primary" onClick={previousPage}>
-                        <ArrowBackIosNewIcon/>
+                        <ArrowBackIosNewIcon sx={{ fontSize: "1rem"}}/>
                     </IconButton>  
                     {pageNumbers.map(pageNumber => {
                       return <Button key={pageNumber} size='small'className="page-button" disabled={pageNumber==currentPage?true:false}variant="contained" color="primary" 
                                onClick={()=>setCurrentPage(pageNumber)}>{pageNumber}</Button>
                   })}
                     <IconButton disabled={currentPage==lastPage?true:false}variant="contained" color="primary"  onClick={nextPage}>
-                        <ArrowForwardIosIcon />
+                        <ArrowForwardIosIcon sx={{ fontSize: "1rem"}}/>
                     </IconButton>               
                     <IconButton disabled={currentPage==lastPage?true:false}variant="contained" color="primary" onClick={toEnd}>
-                        <KeyboardDoubleArrowRightIcon sx={{ fontSize: "2rem" }}/>
+                        <KeyboardDoubleArrowRightIcon sx={{ fontSize: "1rem"}}/>
                     </IconButton>
             </Stack>
       </Stack>

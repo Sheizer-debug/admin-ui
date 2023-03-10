@@ -68,40 +68,42 @@ function editDetails(){
     handleClose();
 }
 return (
-            <table className="users-table">
-                <thead className="table-header">
-                    <tr style={{backgroundColor:theme.components.Table.primary,color:theme.components.Table.secondary}}>
-                        <th><Checkbox checked={selectAll} sx={{color: "#FFFF"}} onChange={onSelectAll}/></th>
-                        <th align="center">Name</th>
-                        <th align="center">Email</th>
-                        <th align="center">Role</th>
-                        <th align="center">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <DialogBox open={open} formData={formData} update={update} handleOpen={handleOpen} handleClose={handleClose} editDetails={editDetails}/>
-                    {currentPageData.map((user) => (
-                            <tr
-                            key={user.id}
-                            sx={{ backgroundColor:selected.includes(user.id)?theme.components.Row.selected:theme.components.Row.primary}}
-                            >
-                                <td><Checkbox checked={selected.includes(user.id)} onChange={()=>changeSelection(user.id)}/></td>
-                                <td align="center">{user.name}</td>
-                                <td align="center">{user.email}</td>
-                                <td align="center">{user.role}</td>
-                                <td align="center">
-                                        <Stack direction="row" justifyContent="center" spacing={1}>
-                                            <IconButton color="primary"onClick={()=>handleOpen(user.id)}>
-                                                <EditIcon/>
-                                            </IconButton>
-                                            <IconButton onClick={()=>deleteUser(user.id)}>
-                                                <DeleteOutlineOutlinedIcon color="error"/>
-                                            </IconButton>
-                                        </Stack>
-                                </td>
-                            </tr>
-                    ))}
-                </tbody>
-            </table>
+        <div class="table-wrapper">
+                <table className="users-table">
+                    <thead className="table-header">
+                        <tr style={{backgroundColor:theme.components.Table.primary,color:theme.components.Table.secondary}}>
+                            <th><Checkbox checked={selectAll} sx={{color: "#FFFF"}} onChange={onSelectAll}/></th>
+                            <th align="center">Name</th>
+                            <th align="center">Email</th>
+                            <th align="center">Role</th>
+                            <th align="center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <DialogBox open={open} formData={formData} update={update} handleOpen={handleOpen} handleClose={handleClose} editDetails={editDetails}/>
+                        {currentPageData.map((user) => (
+                                <tr
+                                key={user.id}
+                                sx={{ backgroundColor:selected.includes(user.id)?theme.components.Row.selected:theme.components.Row.primary}}
+                                >
+                                    <td><Checkbox checked={selected.includes(user.id)} onChange={()=>changeSelection(user.id)}/></td>
+                                    <td align="center">{user.name}</td>
+                                    <td align="center">{user.email}</td>
+                                    <td align="center">{user.role}</td>
+                                    <td align="center">
+                                            <Stack direction="row" justifyContent="center" spacing={1}>
+                                                <IconButton color="primary"onClick={()=>handleOpen(user.id)}>
+                                                    <EditIcon/>
+                                                </IconButton>
+                                                <IconButton onClick={()=>deleteUser(user.id)}>
+                                                    <DeleteOutlineOutlinedIcon color="error"/>
+                                                </IconButton>
+                                            </Stack>
+                                    </td>
+                                </tr>
+                        ))}
+                    </tbody>
+                </table>
+        </div>
   );
 }
