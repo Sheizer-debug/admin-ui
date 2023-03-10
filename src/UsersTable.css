@@ -12,4 +12,7 @@ table, tr {
         overflow-x: auto;
         white-space: nowrap;
       }
+      td,th{
+        padding: 0 2rem;
+    }
   }
